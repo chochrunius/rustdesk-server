@@ -1,8 +1,6 @@
-[target.x86_64-pc-windows-msvc]
-rustflags = ["-Ctarget-feature=+crt-static"]
-[target.i686-pc-windows-msvc]
-rustflags = ["-Ctarget-feature=+crt-static"]
-[target.'cfg(target_os="macos")']
+[target.x86_64-unknown-linux-musl]
+linker = "zig cc"
 rustflags = [
-    "-C", "link-args=-sectcreate __CGPreLoginApp __cgpreloginapp /dev/null",
+  "-C", "target-cpu=generic",
+  "-C", "target-feature=-sse,-sse2,-sse3,-ssse3,-sse4.1,-sse4.2,-avx,-avx2",
 ]
